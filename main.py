@@ -127,7 +127,7 @@ counter = 0
 for i in range (Elements_Count):
     for j in range(Elements_Count):
         if (i,j) not in connected:
-            f.write(str(i)+"\t"+ str(j)+"\t"+"0"+"\n")
+            f.write(str(i)+"\t"+ str(j)+"\t"+"99999"+"\n")
             counter+=1
 
 # Finally visualizing the data using mathplotlib
