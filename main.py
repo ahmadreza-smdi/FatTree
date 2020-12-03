@@ -23,8 +23,9 @@ AggrSwitch_Count_In_Pods=EdgeSwitch_Count_In_Pods
 # print(pods_Count, Servers_Count, EdgeSwitch_Count, AggrSwitch_Count, CoreSwitch_Count, AllSwitch_Count, Elements_Count)
 
 # Each Element has connection to itself, First we add those connections to output
-for i in range(Elements_Count-1):
+for i in range(Elements_Count):
     out = str(i)+ "\t" + str(i) + "\t" +"1" + "\n"
+    connected.append((i, i))
     f.write(out)
 
 
