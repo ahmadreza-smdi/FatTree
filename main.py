@@ -16,6 +16,7 @@ CoreSwitch_Count = int((k / 2) ** 2)
 AllSwitch_Count = CoreSwitch_Count + EdgeSwitch_Count + AggrSwitch_Count
 Elements_Count = AllSwitch_Count + Servers_Count
 EdgeSwitch_Count_In_Pods = k//2
+AggrSwitch_Count_In_Pods=EdgeSwitch_Count_In_Pods
 # print(pods_Count, Servers_Count, EdgeSwitch_Count, AggrSwitch_Count, CoreSwitch_Count, AllSwitch_Count, Elements_Count)
 
 #Each Element has connection to itself, First we add those connections to output
@@ -47,4 +48,25 @@ for i in range(pods_Count):
             Server_counter+=1
 
         counter += 1
+
+#Handling connection between Aggregation switches and edge switches
+
+for i in range(pods_Count):
+
+    for j in range(AggrSwitch_Count_In_Pods):
+
+        for l in range (k//2):
+
+            out = str(counter)+"\t"+str(Server_counter)+"\t"+"1"+"\n"
+            f.write(out)
+            out = str(Server_counter) + "\t" + str(counter) + "\t" + "1" + "\n"
+            f.write(out)
+            Server_counter+=1
+        Server_counter-=k//2
+        counter += 1
+    Server_counter+=k//2
+
+
+
+
 
