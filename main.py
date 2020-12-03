@@ -24,11 +24,22 @@ EdgeSwitch_Count_In_Pods = k//2
 #     f.write(out)
 
 
+
+# counter is way that we address number of edge switches
+# counter starts at number of servers because 0 should be included in server counts
 counter = Servers_Count
+
+# server counter is a way to address the server for mapping between edge switches and servers
 Server_counter = 0
+
+# program goes stage by stage bottom up, first we create links between edge and servers
+
 for i in range(pods_Count):
+
     for j in range(EdgeSwitch_Count_In_Pods):
+
         for l in range (k//2):
+
             out = str(counter)+"\t"+str(Server_counter)+"\t"+"1"+"\n"
             f.write(out)
             out = str(Server_counter) + "\t" + str(counter) + "\t" + "1" + "\n"
@@ -36,3 +47,4 @@ for i in range(pods_Count):
             Server_counter+=1
 
         counter += 1
+
