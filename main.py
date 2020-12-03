@@ -1,4 +1,6 @@
 #this project is implementation of fat tree topology
+
+#we use GraphVisualization which works with networkx to visualize graph
 import GraphVisualization
 G = GraphVisualization.GraphVisualization()
 
@@ -8,8 +10,13 @@ k = int(input("K?"))
 
 #open the output file
 f = open("output.txt","w")
+
+
 #Calculating the pods, servers, core switches, aggregation switches
+
+#connected list used when we want to keep track of connection and which are 1
 connected= []
+
 pods_Count = int(k)
 Servers_Count = int(pods_Count * ((k / 2) ** 2))
 Servers_In_Pod = (k / 2) ** 2
@@ -20,7 +27,6 @@ AllSwitch_Count = CoreSwitch_Count + EdgeSwitch_Count + AggrSwitch_Count
 Elements_Count = AllSwitch_Count + Servers_Count
 EdgeSwitch_Count_In_Pods = k//2
 AggrSwitch_Count_In_Pods=EdgeSwitch_Count_In_Pods
-# print(pods_Count, Servers_Count, EdgeSwitch_Count, AggrSwitch_Count, CoreSwitch_Count, AllSwitch_Count, Elements_Count)
 
 # Each Element has connection to itself, First we add those connections to output
 for i in range(Elements_Count):
@@ -124,4 +130,5 @@ for i in range (Elements_Count):
             f.write(str(i)+"\t"+ str(j)+"\t"+"0"+"\n")
             counter+=1
 
+# Finally visualizing the data using mathplotlib
 G.visualize()
