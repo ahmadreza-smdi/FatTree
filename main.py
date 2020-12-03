@@ -22,10 +22,10 @@ EdgeSwitch_Count_In_Pods = k//2
 AggrSwitch_Count_In_Pods=EdgeSwitch_Count_In_Pods
 # print(pods_Count, Servers_Count, EdgeSwitch_Count, AggrSwitch_Count, CoreSwitch_Count, AllSwitch_Count, Elements_Count)
 
-#Each Element has connection to itself, First we add those connections to output
-# for i in range(Elements_Count-1):
-#     out = str(i)+ "\t" + str(i) + "\t" +"1" + "\n"
-#     f.write(out)
+# Each Element has connection to itself, First we add those connections to output
+for i in range(Elements_Count-1):
+    out = str(i)+ "\t" + str(i) + "\t" +"1" + "\n"
+    f.write(out)
 
 
 
@@ -108,7 +108,7 @@ for i in range(pods_Count):
             connected.append((core[p],Server_counter ))
             G.addEdge(core[p],Server_counter )
             p+=1
-            if(p==k):
+            if(p==(k//2)**2):
                 p=0
         Server_counter+=1
     p = p+1
@@ -123,5 +123,4 @@ for i in range (Elements_Count):
             f.write(str(i)+"\t"+ str(j)+"\t"+"0"+"\n")
             counter+=1
 
-print(counter)
 G.visualize()
